@@ -1,5 +1,4 @@
 FROM golang:latest AS builder
-ENV GOPROXY="https://repo.cci.nokia.net/proxy-golang-org"
 ENV GOSUMDB=off
 WORKDIR /app
 COPY go.mod go.sum ./
