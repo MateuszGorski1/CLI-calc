@@ -46,27 +46,28 @@ func CreateCLIHandler() *cli.App {
 				err := errors.New("you have to provide 2 arguments")
 				log.Fatal().Err(err).Msg("")
 			}
-
-			if operation == "add" {
+			switch operation {
+			case "add":
 				result = num1 + num2
 				fmt.Fprintln(Out, result)
-			} else if operation == "sub" {
+			case "sub":
 				result = num1 - num2
 				fmt.Fprintln(Out, result)
-			} else if operation == "mul" {
+			case "mul":
 				result = num1 * num2
 				fmt.Fprintln(Out, result)
-			} else if operation == "div" {
+			case "div":
 				if num2 == 0 {
 					err := errors.New("you cannot divide by 0")
 					log.Fatal().Err(err).Msg("")
 				}
 				result = num1 / num2
 				fmt.Fprintln(Out, result)
-			} else {
+			default:
 				err := errors.New("unknown operation")
 				log.Fatal().Err(err).Msg("")
 			}
+
 			log.Debug().
 				Float64("Number 1", num1).
 				Float64("Number 2", num2).
